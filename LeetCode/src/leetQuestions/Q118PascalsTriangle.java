@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Q118PascalsTriangle {
-
+//to do
 	public static void main(String[] args) {
 		List<ArrayList<Integer>> list1 = new ArrayList<ArrayList<Integer>>();
 		List<Integer> list2 = new ArrayList<Integer>();
