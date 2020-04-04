@@ -18,13 +18,34 @@ public class Q863DistKTree {
 	}
 	Node element=null;
 	List<Integer> list = new ArrayList<Integer>();
-	void findElementUtil(Node temp, int k) {
-		int levelK = findElement(temp, k, 1);
-		if(levelK!=1) {
-			int diff = levelK-1;
-			findElementsFromRoot(temp, levelK+diff);
+	int findElementUtil(Node temp, Node target,int k) {
+		if(temp==null) {
+			return -1;
 		}
-		findElementsFromRoot(element, 3);
+		if(target==temp) {
+			findElementsFromRoot(temp, k);
+			return 0;
+		}
+		int dl = findElementUtil(temp.left,target,k);
+		if(dl!=-1) {
+			if(dl+1==k) {
+				System.out.print(temp.key+" ");
+			}else {
+				findElementsFromRoot(temp.right, k-dl-2);
+			}
+			return 1+dl;
+		}
+		
+		int dr = findElementUtil(temp.right,target, k);
+		if(dr!=-1) {
+			if(dr+1==k) {
+				System.out.print(temp.key+" ");
+			}else {
+				findElementsFromRoot(temp.left, k-dr-2);
+			}
+			return 1+dr;
+		}
+		return -1;
 	}
 
 	int findElement(Node temp, int k, int level) {
@@ -49,7 +70,7 @@ public class Q863DistKTree {
 		if (temp == null) {
 			return;
 		}
-		if (d == 0 && temp.key!=element.key) {
+		if (d == 0) {
 			list.add(temp.key);
 			System.out.print(temp.key+" ");
 			return;
@@ -73,8 +94,16 @@ public class Q863DistKTree {
 		tree1.root.right = new Node(1);
 		tree1.root.right.left = new Node(0);
 		tree1.root.right.right = new Node(8);
-//		System.out.println(tree1.findElement(tree1.root, 8, 1));
-		tree1.findElementUtil(tree1.root, 5);
+		Node target = tree1.root.left.right.right.left;
+		tree1.findElementUtil(tree1.root,target,2);
 	}
 
 }
+
+
+//		int levelK = findElement(temp, k, 1);
+//if(levelK!=1) {
+//	int diff = levelK-1;
+//	findElementsFromRoot(temp, levelK+diff);
+//}
+//findElementsFromRoot(element, 3);
