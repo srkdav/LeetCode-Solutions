@@ -3,12 +3,13 @@ package leetQuestions;
 public class Q557ReverseWordsInStringIII {
 
 	public static void main(String[] args) {
-		String str1 = " lets go to abc";
+		String str1 = "Let's take LeetCode contest";
 		String words[] = str1.split(" ");
 		StringBuilder str2= new StringBuilder();
 		for(String w:words) {
 			str2.append(new StringBuffer(w).reverse().toString()+" ");
 		}
+		System.out.println(str2);
 		
 
 	}

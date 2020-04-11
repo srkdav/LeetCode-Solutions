@@ -12,40 +12,77 @@ public class Q671SecondMinTree {
 		root = new Node(key);
 	}
 
-	int min1 = 0;
-	int a = Integer.MAX_VALUE;
-	public void minimumValue(Node temp) {
-		if(temp==null) {
-			return;
-		}
-		if (temp != null) {
-			if (min1 < temp.key && temp.key<a) {
-				a=temp.key;
-			} else if (min1 == temp.key) {
-				minimumValue(temp.left);
-				minimumValue(temp.right);
-			}
-		}
-	}
+//	int min1 = 0;
+//	int a = Integer.MAX_VALUE;
+//	public void minimumValue(Node temp) {
+//		if(temp==null) {
+//			return;
+//		}
+//		if (temp != null) {
+//			if (min1 < temp.key && temp.key<a) {
+//				a=temp.key;
+//			} else if (min1 == temp.key) {
+//				minimumValue(temp.left);
+//				minimumValue(temp.right);
+//			}
+//		}
+//	}
+//
+//	public void finalMin(Node root) {
+//		min1=root.key;
+//		minimumValue(root);
+//		if(a<Integer.MAX_VALUE) {
+//			System.out.println(a);
+//		}else{
+//			System.out.println(-1);
+//		}
+//	}
+	public void findMin2Util(Node temp) {
 
-	public void finalMin(Node root) {
-		min1=root.key;
-		minimumValue(root);
-		if(a<Integer.MAX_VALUE) {
-			System.out.println(a);
-		}else{
+		findMin2(temp);
+		System.out.println(min2);
+		if (flag == false) {
 			System.out.println(-1);
 		}
+
+	}
+
+	int min1 = Integer.MAX_VALUE;
+	boolean flag = false;
+	int min2 = Integer.MAX_VALUE;
+
+	public void findMin2(Node temp) {
+		if (temp == null) {
+			return;
+		}
+		findMin2(temp.left);
+		findMin2(temp.right);
+		if (min1 == Integer.MAX_VALUE) {
+			if (temp.key < min1) {
+				min1 = temp.key;
+			}
+		}else {
+			if(temp.key<min1) {
+				min2=min1;
+				min1=temp.key;
+				flag=true;
+			}
+		}
+		if (temp.key <= min2 && temp.key > min1) {
+			min2 = temp.key;
+			flag = true;
+		}
+
 	}
 
 	public static void main(String[] args) {
 		Q671SecondMinTree tree = new Q671SecondMinTree();
-		tree.root = new Node(1);
-		tree.root.left = new Node(1);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(1);
-		tree.root.left.right = new Node(2);
-		tree.finalMin(tree.root);
+		tree.root = new Node(5);
+		tree.root.left = new Node(8);
+		tree.root.right = new Node(5);
+//		tree.root.right.left = new Node(5);
+//		tree.root.right.right = new Node(7);
+		tree.findMin2Util(tree.root);
 //		tree.root.left.left = new Node(4);
 //		tree.root.left.right = new Node(5);
 //		tree.root.left.left.left = new Node(0);
