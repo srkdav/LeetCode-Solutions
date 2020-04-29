@@ -1,6 +1,7 @@
 package leetQuestions;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Q1222QueensKing {
 
@@ -10,15 +11,20 @@ public class Q1222QueensKing {
 		int[] k = new int[] { 3, 3 };
 		int kr = k[0];
 		int kc = k[1];
-		int[] a = new int[] { 3, 3 };
+		int[] a = new int[]{k[0],k[1]};
+		List<List<Integer>> list = new ArrayList<List<Integer>>();
 		// RIGHT
 		for (int c = kc; c < 8; c++) {
 			a[1]++;
 			boolean flag = false;
 			for (int qr = 0; qr < q.length; qr++) {
 				if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-					System.out.print(a[0] + " " + a[1]);
-					System.out.println();
+					// System.out.print(a[0] + " " + a[1]);
+					// System.out.println();
+					List<Integer> l = new ArrayList<Integer>();
+					l.add(a[0]);
+					l.add(a[1]);
+					list.add(l);
 					flag = true;
 					break;
 				}
@@ -28,14 +34,18 @@ public class Q1222QueensKing {
 			}
 		}
 		// LEFT
-		a = new int[] { 3, 3 };
+		a = new int[]{k[0],k[1]};
 		for (int c = kc; c >= 0; c--) {
 			a[1]--;
 			boolean flag = false;
 			for (int qr = 0; qr < q.length; qr++) {
 				if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-					System.out.print(a[0] + " " + a[1]);
-					System.out.println();
+					// System.out.print(a[0] + " " + a[1]);
+					// System.out.println();
+					List<Integer> l = new ArrayList<Integer>();
+					l.add(a[0]);
+					l.add(a[1]);
+					list.add(l);
 					flag = true;
 					break;
 				}
@@ -45,14 +55,18 @@ public class Q1222QueensKing {
 			}
 		}
 		// DOWN
-		a = new int[] { 3, 3 };
+		a = new int[]{k[0],k[1]};
 		for (int r = kr; r < 8; r++) {
 			a[0]++;
 			boolean flag = false;
 			for (int qr = 0; qr < q.length; qr++) {
 				if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-					System.out.print(a[0] + " " + a[1]);
-					System.out.println();
+					// System.out.print(a[0] + " " + a[1]);
+					// System.out.println();
+					List<Integer> l = new ArrayList<Integer>();
+					l.add(a[0]);
+					l.add(a[1]);
+					list.add(l);
 					flag = true;
 					break;
 				}
@@ -62,14 +76,19 @@ public class Q1222QueensKing {
 			}
 		}
 		// UP
-		a = new int[] { 3, 3 };
+		a = new int[]{k[0],k[1]};
 		for (int r = kr; r >= 0; r--) {
 			a[0]--;
 			boolean flag = false;
 			for (int qr = 0; qr < q.length; qr++) {
 				if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-					System.out.print(a[0] + " " + a[1]);
-					System.out.println();
+					// System.out.print(a[0] + " " + a[1]);
+					// System.out.println();
+
+					List<Integer> l = new ArrayList<Integer>();
+					l.add(a[0]);
+					l.add(a[1]);
+					list.add(l);
 					flag = true;
 					break;
 				}
@@ -79,7 +98,7 @@ public class Q1222QueensKing {
 			}
 		}
 		// Diag-Up-right
-		a = new int[] { 3, 3 };
+		a = new int[]{k[0],k[1]};
 		for (int r = kr; r >= 0; r--) {
 			boolean flag = false;
 			for (int c = kc; c < 8; c++) {
@@ -88,34 +107,42 @@ public class Q1222QueensKing {
 				if (a[0] >= 0 && a[1] <= 8) {
 					for (int qr = 0; qr < q.length; qr++) {
 						if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-							System.out.print(a[0] + " " + a[1]);
-							System.out.println();
+							// System.out.print(a[0] + " " + a[1]);
+							// System.out.println();
+							List<Integer> l = new ArrayList<Integer>();
+							l.add(a[0]);
+							l.add(a[1]);
+							list.add(l);
 							flag = true;
 							break;
 						}
 					}
-				}else{
-					flag=true;
+				} else {
+					flag = true;
 				}
 				if (flag) {
 					break;
 				}
 			}
-			if(flag){
+			if (flag) {
 				break;
 			}
 		}
 		// Diag-up-left
-		a = new int[] { 3, 3 };
+		a = new int[]{k[0],k[1]};
 		for (int r = kr; r >= 0; r--) {
+			boolean flag = false;
 			for (int c = kc; c >= 0; c--) {
 				a[0]--;
 				a[1]--;
-				boolean flag = false;
 				for (int qr = 0; qr < q.length; qr++) {
 					if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-						System.out.print(a[0] + " " + a[1]);
-						System.out.println();
+						// System.out.print(a[0] + " " + a[1]);
+						// System.out.println();
+						List<Integer> l = new ArrayList<Integer>();
+						l.add(a[0]);
+						l.add(a[1]);
+						list.add(l);
 						flag = true;
 						break;
 					}
@@ -123,19 +150,26 @@ public class Q1222QueensKing {
 				if (flag) {
 					break;
 				}
+			}
+			if (flag) {
+				break;
 			}
 		}
 		// diag-bott-right
-		a = new int[] { 3, 3 };
+		a = new int[]{k[0],k[1]};
 		for (int r = kr; r < 8; r++) {
+			boolean flag = false;
 			for (int c = kc; c < 8; c++) {
 				a[0]++;
 				a[1]++;
-				boolean flag = false;
 				for (int qr = 0; qr < q.length; qr++) {
 					if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-						System.out.print(a[0] + " " + a[1]);
-						System.out.println();
+						// System.out.print(a[0] + " " + a[1]);
+						// System.out.println();
+						List<Integer> l = new ArrayList<Integer>();
+						l.add(a[0]);
+						l.add(a[1]);
+						list.add(l);
 						flag = true;
 						break;
 					}
@@ -143,19 +177,26 @@ public class Q1222QueensKing {
 				if (flag) {
 					break;
 				}
+			}
+			if (flag) {
+				break;
 			}
 		}
 		// Diag-bot-left
-		a = new int[] { 3, 3 };
+		a = new int[]{k[0],k[1]};
 		for (int r = kr; r < 8; r++) {
+			boolean flag = false;
 			for (int c = kc; c >= 0; c--) {
 				a[0]++;
 				a[1]--;
-				boolean flag = false;
 				for (int qr = 0; qr < q.length; qr++) {
 					if (a[0] == q[qr][0] && a[1] == q[qr][1]) {
-						System.out.print(a[0] + " " + a[1]);
-						System.out.println();
+						// System.out.print(a[0] + " " + a[1]);
+						// System.out.println();
+						List<Integer> l = new ArrayList<Integer>();
+						l.add(a[0]);
+						l.add(a[1]);
+						list.add(l);
 						flag = true;
 						break;
 					}
@@ -164,8 +205,13 @@ public class Q1222QueensKing {
 					break;
 				}
 			}
+			if (flag) {
+				break;
+			}
 		}
-
+		for (List<Integer> l : list) {
+			System.out.println(l);
+		}
 	}
 
 }
