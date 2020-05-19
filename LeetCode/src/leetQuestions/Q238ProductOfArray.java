@@ -7,7 +7,7 @@ public class Q238ProductOfArray {
 
 	public static void main(String[] args) {
 
-		int a[] = new int[]{5,2};
+		int a[] = new int[]{1,2,3,4};
 		int b[] = new int[a.length];
 		int left=1;
 		int right=1;

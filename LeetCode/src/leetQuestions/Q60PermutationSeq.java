@@ -4,32 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Q60PermutationSeq {
-	// static int k;
-	static List<Integer> list = new ArrayList<Integer>();
 
-	public static void permutateUtil(int a[],int k) {
-		if (list.size() == 3) {
-			System.out.println(list);
+	static int count=0;
+	public static void permutateSeq1(List<Character> list, char a[], int n, int k) {
+		if (list.size() == n) {
+			count++;
+			if(count==k){
+				String s = list.toString();
+//				System.out.println(s);
+				StringBuilder s1 = new StringBuilder();
+				for(Character l:list){
+					s1.append(l);
+				}
+				s=s1.toString();
+				System.out.println(s);
+			}
 			return;
-		}
-		for (int i = k; i < a.length; i++) {
-			list.add(a[i]);
-			permutateUtil(a, k+1);
-			list.remove(list.size() - 1);
-		}
-	}
-
-	public static void permutateSeq(int a[], int k) {
-		for(int j=0;j<a.length;j++){
-			permutateUtil(a,j);
+		} else {
+			for (int i = 0; i < a.length; i++) {
+				if (list.contains(a[i])) {
+					continue;
+				}
+				list.add(a[i]);
+				permutateSeq1(list, a, n, k);
+				list.remove(list.size() - 1);
+			}
 		}
 	}
 
 	public static void main(String[] args) {
 
-		// String str = "1234";
-		int a[] = new int[] { 1, 2, 3 };
-		permutateSeq(a, 0);
+		String str = "123456789";
+		List<Character> list = new ArrayList<Character>();
+		// permutateSeq(a, 0);
+		int k=9;
+		int n=4;
+		char a[] = str.substring(0, n).toCharArray();
+		permutateSeq1(list, a, n, k);
 
 	}
 

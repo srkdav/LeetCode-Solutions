@@ -19,14 +19,18 @@ public class Q94BinaryTree {
 		st.push(root);
 		Node curr = st.peek();
 		while (curr != null || !st.empty()) {
-			while (curr!= null) {
+			while (curr != null) {
 				st.push(curr);
 				curr = curr.left;
 			}
-			curr=st.pop();
-			curr=curr.right;
+			curr = st.pop();
+			curr = curr.right;
 
 		}
+	}
+
+	public void inOrderTraverse(Node temp) {
+
 
 	}
 
@@ -34,9 +38,13 @@ public class Q94BinaryTree {
 		// TODO Auto-generated method stub
 		Q94BinaryTree tree2 = new Q94BinaryTree();
 		tree2.root = new Node(1);
+		tree2.root.left = new Node(2);
 		tree2.root.right = new Node(3);
-		tree2.root.right.right = new Node(0);
-		tree2.inOrder(tree2.root);
+		tree2.root.left.left = new Node(4);
+		tree2.root.left.right = new Node(5);
+		tree2.root.right.left = new Node(6);
+
+		tree2.inOrderTraverse(tree2.root);
 	}
 
 }

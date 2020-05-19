@@ -30,15 +30,25 @@ public class Q78SubSet {
 		}
 		return output;
 	}
+	static List<Integer> list = new ArrayList<>();
+	public static void findSubSets(int[] a,int idx){
+		System.out.println(list);
+		for(int i=idx;i<a.length;i++){
+			if(list.contains(a[i])){
+				continue;
+			}
+			list.add(a[i]);
+			findSubSets(a, i);
+			list.remove(list.size()-1);
+		}
+	}
 
 	public static void main(String[] args) {
 
 		int a[] = new int[] { 1, 2, 3 };
-	
-		List<List<Integer>> list = subsets(a);
-		for(List<Integer> l:list) {
-			System.out.println(l);
-		}
+		findSubSets(a, 0);
+		
+		
 		
 	}
 
