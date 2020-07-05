@@ -109,17 +109,27 @@ public class Q101SymmetricTree {
 		return count;
 	}
 
+	public static boolean isSymmentric(Node root1,Node root2) {
+		if(root1==null && root2==null) {
+			return true;
+		}
+		if(root1==null || root2==null) {
+			return false;
+		}
+		return root1.key==root2.key && isSymmentric(root1.right, root2.left) &&
+				isSymmentric(root1.left, root2.right);
+	}
 	public static void main(String[] args) {
 
 		Q101SymmetricTree tree1 = new Q101SymmetricTree();
 		tree1.root = new Node(1);
 		tree1.root.left = new Node(2);
-		tree1.root.right = new Node(3);
-		tree1.root.left.left = new Node(4);
-		tree1.root.left.right = new Node(5);
-		tree1.root.right.left = new Node(6);
-		tree1.root.right.right = new Node(7);
-		
+		tree1.root.right = new Node(2);
+		tree1.root.left.left = new Node(3);
+		tree1.root.left.right = new Node(4);
+		tree1.root.right.left = new Node(4);
+		tree1.root.right.right = new Node(3);
+		System.out.println(isSymmentric(tree1.root, tree1.root));
 //		tree1.root.left = new Node(0);
 //		tree1.root.right = new Node(1);
 //		tree1.root.left.left = new Node(1);
@@ -135,9 +145,9 @@ public class Q101SymmetricTree {
 //		tree1.root.right.left.right = new Node(0);
 //		tree1.root.right.right.left = new Node(1);
 //		tree1.root.right.right.right = new Node(0);		
-		tree1.printAllPaths(tree1.root, 2);
-		tree1.inOrderTraversal(tree1.root, 2);
-		System.out.println(tree1.count);
+//		tree1.printAllPaths(tree1.root, 2);
+//		tree1.inOrderTraversal(tree1.root, 2);
+//		System.out.println(tree1.count);
 
 //		tree1.root.right.right = new Node(3);
 //		tree1.isSymmetric(tree1.root);
@@ -146,41 +156,3 @@ public class Q101SymmetricTree {
 
 }
 
-//*********************************************************
-//boolean flag = true;
-//StringBuilder str = new StringBuilder();
-//public void symmetricTree(Node temp) {
-//	if (temp == null) {
-//		return;
-//	}
-//	symmetricTree(temp.left);
-//	if (temp.left != null || temp.right != null) {
-//		if (temp.left == null) {
-//			str.append("x");
-//			str.append(temp.key);
-//		}
-//		if (temp.right == null) {
-//			str.append(temp.key);
-//			str.append("x");
-//		}
-//		if(temp.left!=null && temp.right!=null) {
-//			str.append(temp.key);
-//		}
-//	}
-//	if(temp.left==null && temp.right==null) {
-//		str.append(temp.key);
-//	}
-//	symmetricTree(temp.right);
-//}
-//
-//public void isSymmetric(Node temp) {
-//	symmetricTree(temp);
-//	System.out.println(str);
-//	for (int i = 0; i < str.length(); i++) {
-//		if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
-//			flag = false;
-//		}
-//	}
-//	System.out.println(flag);
-//}
-//

@@ -5,21 +5,25 @@ import java.util.List;
 
 public class Q70Stairs {
 
-	public static int findCount(int i,int sum){
-		if(i>sum){
+	static int count = 0;
+
+	public static int findCount(int start, int target, int[] mem) {
+		if (start > target) {
 			return 0;
 		}
-		if(i==sum){
+		if (start == target) {
+			count++;
 			return 1;
 		}
-		int x=findCount(i+1,sum);
-		int y=findCount(i+2, sum);
-		return x+y;
+		mem[start] = findCount(start + 1, target, mem) + findCount(start + 2, target, mem);
+		return mem[start];
 	}
+
 	public static void main(String[] args) {
-		System.out.println(findCount(0, 3));
-		
-		
+		int[] mem = new int[5];
+		findCount(0, 4,mem);
+		System.out.println(count);
+
 	}
 
 }

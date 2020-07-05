@@ -75,6 +75,23 @@ public class Q406QueueRecons {
          return res.toArray(new int[people.length][]);
     }
 
+    public static void reconsQueue(int[][] arr) {
+    	Arrays.sort(arr,new Comparator<int[]>(){
+            @Override
+            public int compare(int[] o1, int[] o2){
+                return o1[0]!=o2[0]?-o1[0]+o2[0]:o1[1]-o2[1];
+            }
+         });
+    	List<int[]> res = new LinkedList<>();
+    	for(int[] a:arr) {
+    		res.add(a[1], a);
+    	}
+    	int[][] ans=new int[arr.length][2];
+    	for(int i=0;i<ans.length;i++) {
+    		ans[i][0]=res.get(i)[0];
+    		ans[i][1]=res.get(i)[1];
+    	}
+    }
 	public static void main(String[] args) {
 
 		int a[][] = new int[][] { { 7, 0 }, { 4, 4 }, { 7, 1 }, { 5, 0 }, { 6, 1 }, { 5, 2 } };

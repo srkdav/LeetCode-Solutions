@@ -48,7 +48,7 @@ public class Q46Permutations {
 
 	public static void main(String[] args) {
 
-		int[] a = new int[] { 1, 2, 3 };
+		int[] a = new int[] { 1, 1,2 };
 		List<List<Integer>> list = new ArrayList<>();
 		// Arrays.sort(nums); // not necessary
 		backtrack(list, new ArrayList<>(), a);
